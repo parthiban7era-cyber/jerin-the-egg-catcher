@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>🥚 JERIN THE EGG CATCHER (BETA VERSION)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main App Viewport -->
+  <div id="app-container">
+
+    <!-- 0. BETA VERSION WELCOME SCREEN -->
+    <section id="beta-screen" class="screen active">
+      <div class="sky-bg">
+        <div class="sunbeam"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+      </div>
+      <div class="hills-bg"></div>
+
+      <div class="beta-card">
+        <div class="beta-badge">BETA VERSION 1.0</div>
+        <h1 class="beta-title">
+          <span class="emoji-bounce">🥚</span> JERIN THE EGG CATCHER
+        </h1>
+        <p class="beta-desc">
+          Welcome to the official <strong>Beta Version</strong> of <em>Jerin The Egg Catcher</em>!
+          Experience fun cartoon farm gameplay, interactive video cutscenes, and fast-paced egg-catching action.
+          Catch all falling eggs before they smash on the farm ground!
+        </p>
+
+        <div class="beta-controls-info">
+          <div class="info-tag">📱 <strong>Mobile:</strong> Use On-Screen Left/Right Buttons or Drag Screen</div>
+          <div class="info-tag">💻 <strong>PC/Laptop:</strong> Use Keyboard Arrow Keys (← / →) or A / D</div>
+        </div>
+
+        <button id="btn-beta-continue" class="btn-primary btn-begin">
+          <span class="btn-text">ENTER GAME</span>
+          <span class="btn-icon">▶</span>
+        </button>
+
+        <p class="beta-credit">Created by <strong>Parthibhan Creations</strong></p>
+      </div>
+    </section>
+
+    <!-- 1. HOME SCREEN -->
+    <section id="home-screen" class="screen hidden">
+      <!-- Cartoon Sky & Farm Background -->
+      <div class="sky-bg">
+        <div class="sunbeam"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+      </div>
+      <div class="hills-bg"></div>
+
+      <!-- Home Content Layout -->
+      <div class="home-content">
+        <header class="game-header">
+          <h1 class="game-title">
+            <span class="emoji-bounce">🥚</span>
+            <span class="title-text">JERIN THE EGG CATCHER</span>
+            <span class="emoji-bounce">🥚</span>
+          </h1>
+          <p class="subtitle">Catch the falling eggs before they smash!</p>
+        </header>
+
+        <!-- PHOTO 1: Home Screen Character Photo -->
+        <div class="photo1-frame">
+          <div class="frame-badge">Jerin's Farm</div>
+          <img id="img-photo1" src="photo1.jpg" alt="Jerin Farm Photo 1" class="home-photo">
+        </div>
+
+        <!-- BEGIN Button -->
+        <div class="action-zone">
+          <button id="btn-begin" class="btn-primary btn-begin">
+            <span class="btn-text">BEGIN</span>
+            <span class="btn-icon">▶</span>
+          </button>
+        </div>
+
+        <!-- Footer Credit -->
+        <footer class="home-footer">
+          <p class="credit-text">Created by <strong>Parthibhan Creations</strong></p>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 2. INTRO VIDEO (VIDEO 1) SCREEN -->
+    <section id="video1-screen" class="screen hidden">
+      <div class="video-container">
+        <video id="video-intro" playsinline preload="auto">
+          <source src="Man_speaking_and_holding_hen_20260915191514.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Unmute Fallback Overlay -->
+        <div id="video1-unmute-prompt" class="unmute-overlay hidden">
+          <button id="btn-unmute-video1" class="btn-glass">🔊 Tap to Play Video with Audio</button>
+        </div>
+        <button id="btn-skip-video1" class="btn-skip">Skip Intro ▶</button>
+      </div>
+
+      <!-- START OVERLAY (Appears when Video 1 finishes) -->
+      <div id="start-overlay" class="overlay-screen hidden">
+        <div class="overlay-card">
+          <h2>GET READY TO CATCH EGGS!</h2>
+          <p>Use Left/Right buttons or drag your finger on screen to move Jerin!</p>
+          <button id="btn-start" class="btn-primary btn-start">
+            <span class="btn-text">START</span>
+            <span class="btn-icon">⚡</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GAMEPLAY SCREEN -->
+    <section id="game-screen" class="screen hidden">
+      <!-- HUD Top Plaque -->
+      <div id="game-hud" class="hud-bar">
+        <div class="hud-score-plaque">
+          <span class="score-label">EGGS CAUGHT:</span>
+          <span id="score-val" class="score-number">0</span>
+        </div>
+        <div class="hud-level-tag">
+          <span id="difficulty-badge" class="badge easy">EASY</span>
+        </div>
+      </div>
+
+      <!-- Game Canvas -->
+      <canvas id="game-canvas"></canvas>
+
+      <!-- Mobile On-Screen Touch Controls -->
+      <div id="touch-controls" class="touch-controls-bar">
+        <button id="btn-touch-left" class="btn-touch btn-touch-left">
+          <span class="arrow">◀</span> LEFT
+        </button>
+        <button id="btn-touch-right" class="btn-touch btn-touch-right">
+          RIGHT <span class="arrow">▶</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. GAME OVER VIDEO (VIDEO 2) SCREEN -->
+    <section id="video2-screen" class="screen hidden">
+      <div class="video-container">
+        <video id="video-gameover" playsinline preload="auto">
+          <source src="Angry_man_crushing_egg_20260915191937.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <!-- Unmute Fallback Overlay -->
+        <div id="video2-unmute-prompt" class="unmute-overlay hidden">
+          <button id="btn-unmute-video2" class="btn-glass">🔊 Tap for Sound</button>
+        </div>
+      </div>
+
+      <!-- RETRY OVERLAY (Appears when Video 2 ends or Skip clicked) -->
+      <div id="retry-overlay" class="overlay-screen hidden">
+        <div class="overlay-card gameover-card">
+          <h2 class="gameover-title">💥 EGG SMASHED!</h2>
+          <p class="final-score-text">Final Score: <strong id="final-score-val">0</strong> Eggs</p>
+          <button id="btn-retry" class="btn-primary btn-retry">
+            <span class="btn-text">RETRY</span>
+            <span class="btn-icon">🔄</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Game Logic Script -->
+  <script src="game.js"></script>
+</body>
+</html>
